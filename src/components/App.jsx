@@ -1,33 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect} from 'react'
 import './App.css'
+import SearchResults from "./SearchResults";
+import Entry from './Entry';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState("");
+  const [searchData, setSearchData] = useState("");
+  const [id, setId] = useState("");
+  
+  useEffect(() => {
+    console.log(name)
+    const searchterm = encodeURIComponent(
+      name.trimEnd().replace(/\s+/g, "%20").toLowerCase()
+    );
+    // const url = `https://www.giantbomb.com/api/search/?api_key=8a95221cd0dac41e2cac3d2c2299690d2ba478d1&format=json&query=${searchterm}&resources=game`;
+    const url = `https://www.giantbomb.com/api/game/3030-41355/?api_key=8a95221cd0dac41e2cac3d2c2299690d2ba478d1&format=json&field_list=name,deck`
+    fetch(url, {mode: 'no-cors'})
+      .then((r) => r.json())
+      .then((r) => setSearchData(r))
+      .catch((e) => setSearchData(`${e}`));
+  }, [name]);
 
+  
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="App">
+      <h1>Video Game API</h1>
+      <Entry action={setName} />
+      <SearchResults searchData={searchData} />
+    </div>
     </>
   )
 }
