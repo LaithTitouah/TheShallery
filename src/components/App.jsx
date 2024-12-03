@@ -1,22 +1,27 @@
 import './App.css';
-import Search from "./Search";
-import Results from "./Results";
-import useState from "react"
+import { login, logout, useAuthentication } from "../services/authService";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [game, setGame] = useState("");
-
-  useEffect(() => {
-    fetch(`https://www.giantbomb.com/api/game/[guid]/?api_key=[76d5e45e91800071790366678ca2e86a3220ffce]`)
-  })
+  const user = useAuthentication();
 
   return (
     <>
+      <header>
+        <div>
+          {user ? (
+            <>
+              <p>Welcome, {user.displayName}</p>
+              <button onClick={logout}>Sign Out</button>
+            </>
+          ) : (
+            <button onClick={login}>Sign In with Google</button>
+          )}
+        </div>
+      </header>
       <h1>PlayScore</h1>
-      <Search />
-      <Results />
+      <button>Hi</button>
     </>
-  )
+  );
 }
-export default App
+
+export default App;
