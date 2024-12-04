@@ -1,32 +1,40 @@
-import { useState } from 'react'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
+import Search from './Search';
+import Results from './Results'
+import { login, logout, useAuthentication } from "../services/authService";
+import { fetchShowById, fetchShow } from "../services/searchService"
 
-function App() {
-  const [count, setCount] = useState(0)
+
+export default function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [tvShow, setTvShows] = useState("")
+  const user = useAuthentication();
+
+  useEffect(() => {
+    if (searchTerm) {
+    fetchShow(searchTerm).then(setTvShows);
+    }
+}, [searchTerm]);
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header>
+        <div>
+          {user ? (
+            <>
+              <p>Welcome, {user.displayName}</p>
+              <button onClick={logout}>Sign Out</button>
+            </>
+          ) : (
+            <button onClick={login}>Sign In with Google</button>
+          )}
+        </div>
+      </header>
+      <h1>PlayScore</h1>
+      <Search setter={setSearchTerm} /> {/* when setter is called, put setSearchTerm into it and put it as the search */}
+      <Results shows={tvShow}/>
     </>
-  )
+  );
 }
-export default App
