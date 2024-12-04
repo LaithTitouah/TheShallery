@@ -6,7 +6,7 @@ export default function Search( { setter }) {
 
     function submit(e) {
         e.preventDefault();
-        console.log(term)
+        setter(term) // Take the imputed term and invoke the setter (put in the setSearchTerm)
         setTerm("")
     }
 
@@ -14,7 +14,7 @@ export default function Search( { setter }) {
         <form onSubmit={submit}> 
             <input 
             type="text" 
-            placeholder="Search..."
+            placeholder="Search for show..."
             value={term}
             onChange={(e) => setTerm(e.target.value)}
             />
