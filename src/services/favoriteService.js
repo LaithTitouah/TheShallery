@@ -1,12 +1,26 @@
 import { db } from "../firebaseConfig";
 import { loggedInUserId } from "./authService"
-import { doc, setDoc } from "firebase/firestore"
+import {
+    collection,
+    doc,
+    query,
+    getDocs,
+    addDoc,
+    setDoc,
+    orderBy,
+    limit,
+    Timestamp,
+  } from "firebase/firestore"
 
-export function getMyFavorites() {
-    return [];
-
-    //Do later
-}
+  export async function fetchArticles() {
+    const snapshot = await getDocs(
+      query(collection(db, "favorites"), limit(20))
+    )
+    return snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }))
+  }
 
 export async function saveFavorite(showId) {
 
