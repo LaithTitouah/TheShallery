@@ -6,7 +6,8 @@ export async function fetchShow(query) {
             // Return an object with both name and image properties
             return {
                 name: data.name,
-                image: data.image.medium 
+                image: data.image.medium,
+                showId: data.id
             };
         });
 }

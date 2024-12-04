@@ -16,8 +16,6 @@ export default function App() {
     fetchShow(searchTerm).then(setTvShows);
     }
 }, [searchTerm]);
-
-
   return (
     <>
       <header>
