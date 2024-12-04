@@ -12,7 +12,7 @@ import {
     Timestamp,
   } from "firebase/firestore"
 
-  export async function fetchArticles() {
+  export async function getMyFavorites() {
     const snapshot = await getDocs(
       query(collection(db, "favorites"), limit(20))
     )
