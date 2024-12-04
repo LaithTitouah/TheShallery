@@ -66,3 +66,77 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+/*
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #f4f4f4;
+  padding: 10px 20px;
+}
+
+#headersection1 {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#headersection2 {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  background-color: rgba(255, 165, 0, 0.9);
+  padding: 20px;
+  z-index: 2;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#headersection3 nav {
+  margin-top: -70px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #ddd;
+}
+
+#headersection3 nav span {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+#mainTitle h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#mainlist {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+.column {
+  background-color: #e0e0e0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+*/
