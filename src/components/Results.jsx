@@ -1,4 +1,22 @@
+import { useState } from "react";
+import { saveFavorite } from "../services/favoriteService";
+
 export default function Results({ shows }) {
+    const [saving, setSaving] = useState(false);
+    const [saved, setSaved] = useState(false);
+
+    async function save() {
+        try {
+            setSaving(true);
+            await saveFavorite(shows.showId);
+            setSaved(true);
+        } catch (error) {
+            console.error("Error during save:", error);
+            alert("Failed to save. Please try again.");
+        } finally {
+            setSaving(false);
+        }
+    }
 
     return (
         <div>
@@ -8,7 +26,7 @@ export default function Results({ shows }) {
             ) : (
                 <p>No image available</p> 
             )}
-            <button>Save</button>
+            <button onClick={save}>Save</button>
             
         </div>
     )
