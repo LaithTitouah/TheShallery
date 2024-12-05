@@ -1,62 +1,73 @@
-import { useState } from "react";
-import { login } from "../services/authService";
+
+
+import { useState, useEffect } from "react";
 import { saveFavorite } from "../services/favoriteService";
 
 export default function Results({ user, shows }) {
-    const [saving, setSaving] = useState(false);
-    const [saved, setSaved] = useState(false);
-    const [selectedScore, setSelectedScore] = useState(""); // State for dropdown selection
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [selectedScore, setSelectedScore] = useState("");
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
-    async function save() {
-        try {
-            setSaving(true);
-            await saveFavorite(shows.showId, selectedScore);
-            setSaved(true);
-        } catch (error) {
-            alert("Failed to save. Please try again.");
-        } finally {
-            setSaving(false);
-        }
+  useEffect(() => {
+    setSelectedScore("");
+    setDropdownVisible(false);
+    setSaved(false);
+    setSaving(false);
+  }, [shows]);
+
+  async function save() {
+    try {
+      setSaving(true);
+      await saveFavorite(shows.showId, selectedScore);
+      setSaved(true);
+    } catch (error) {
+      alert("Failed to save. Please try again.");
+    } finally {
+      setSaving(false);
     }
+  }
 
-    function handleDropdownChange(event) {
-        setSelectedScore(event.target.value); // Updates the selected option
-    }
+  function handleDropdownChange(event) {
+    setSelectedScore(event.target.value);
+  }
 
-    function ButtonAndScore() {
-        return (
-            <>
-                {!user ? (
-                    <p onClick={login} style={{ cursor: "pointer", color: "blue" }}>Login to Save</p>
-                ) : saving ? (
-                    <p>Saving...</p>
-                ) : saved ? (
-                    <p>Saved to Gallery!</p>
-                ) : (
-                    <div>
-                        <button onClick={save}>Save</button>
-                    </div>
-                )}
-                <select value={selectedScore} onChange={handleDropdownChange}>
-                    <option value="">Select Score</option>
-                    {Array.from({ length: 10 }, (_, i) => (
+  if (!shows) {
+    return null;
+  }
+
+  return (
+    <div>
+      <h2>{shows.name}</h2>
+      {shows.image ? (
+        <img src={shows.image} alt={shows.name} />
+      ) : (
+        <p>No image available</p>
+      )}
+
+      {/* Toggle Dropdown and Button */}
+      <button onClick={() => setDropdownVisible((prev) => !prev)}>
+        {dropdownVisible ? "Hide Options" : "Rate this Show"}
+      </button>
+
+      {dropdownVisible && (
+        <div>
+          <select value={selectedScore} onChange={handleDropdownChange}>
+            <option value="" disabled>
+              Select a score
+            </option>
+            {Array.from({ length: 10 }, (_, i) => (
                         <option key={i + 1} value={i + 1}>{i + 1}</option>
                     ))}
-                </select>
-            </>
-        );
-    }
+          </select>
 
-    return (
-        <div>
-            <h2>{shows.name}</h2>
-            {shows.image ? (
-                <img src={shows.image} alt={shows.name} />
-            ) : (
-                <p>No image available</p>
-            )}
+          <button onClick={save} disabled={saving || !selectedScore}>
+            {saving ? "Saving..." : "Save"}
+          </button>
 
-            <ButtonAndScore />
+          {saved && <p>Score saved successfully!</p>}
         </div>
-    );
+      )}
+    </div>
+  );
 }
