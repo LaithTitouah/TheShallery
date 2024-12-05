@@ -22,12 +22,14 @@ import {
     }))
   }
 
-export async function saveFavorite(showId) {
+export async function saveFavorite(showId, selectedScore) {
 
     const userId = loggedInUserId();
     const result = await setDoc(doc(db, "favorites", `${showId}.${userId}`), {
         showId: showId,
         userId: userId,
+        score: selectedScore,
+
     });
 
     console.log("Favorite added",  result);
