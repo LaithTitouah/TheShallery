@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Search from './Search';
-import Results from './Results'
+import Results from './Results';
+import Header from './Header';
+import TvShowList from './TvShowList';
 import { login, logout, useAuthentication } from "../services/authService";
 import { fetchShowById, fetchShow } from "../services/searchService"
 
@@ -18,21 +20,11 @@ export default function App() {
 }, [searchTerm]);
   return (
     <>
-      <header>
-        <div>
-          {user ? (
-            <>
-              <p>Welcome, {user.displayName}</p>
-              <button onClick={logout}>Sign Out</button>
-            </>
-          ) : (
-            <button onClick={login}>Sign In with Google</button>
-          )}
-        </div>
-      </header>
+      <Header/>
       <h1>PlayScore</h1>
       <Search setter={setSearchTerm} /> {/* when setter is called, put setSearchTerm into it and put it as the search */}
       <Results shows={tvShow}/>
+      <TvShowList />
     </>
   );
 }
