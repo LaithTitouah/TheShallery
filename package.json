@@ -1,6 +1,19 @@
 {
-  "name": "viddylist",
-  "authors": "Sebastian Lange, Laith Titouah, Nikolas Kunstman, Jakob Martinez ",
+  "name": "shallery",
+  "author": {
+    "name": "Sebastian Lange"
+  },
+  "contributors": [
+    {
+      "name": "Laith Titouah"
+    },
+    {
+      "name": "Jacob Martinez"
+    },
+    {
+      "name": "Nikolas Kunstman"
+    }
+  ],
   "private": true,
   "version": "0.0.0",
   "type": "module",
