@@ -7,26 +7,30 @@ export async function fetchShow(query) {
                 return {
                     name: "Unknown Show",
                     image: "https://static.tvmaze.com/uploads/images/medium_portrait/467/1168267.jpg",
-                    showId: null
+                    showId: null,
+
                 };
             }
             return {
-                name: data.name || "Unknown Show", // Fallback if name is missing
-                image: data.image ? data.image.medium : null, // Safely access image.medium
-                showId: data.id || null // Fallback to null if id is missing
+                name: data.name || "Unknown Show", 
+                image: data.image ? data.image.medium : null, 
+                showId: data.id || null,
+
+
             };
         });
 }
 
-export async function fetchShowById(id){
-    if (!id){
-        return null;
-    }
-    id = encodeURIComponent(id);
+export async function fetchShowById(id) {
     return fetch(`https://api.tvmaze.com/shows/${id}`)
-    .then((response) => response.json())
-    .then((data) => {
-        return data.summary;
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        return {
+            name: data.name || "Unknown Show", 
+            image: data.image ? data.image.medium : null, 
+            summary: data.summary || "No summary available",
 
-}
+        };
+        
+      });
+  }
