@@ -11,11 +11,12 @@ import {
     orderBy,
     limit,
     Timestamp,
+    where
   } from "firebase/firestore"
 
   export async function getMyFavorites() {
     try {
-      const querySnapshot = await getDocs(collection(db, 'favorites'), orderBy("score"));
+      const querySnapshot = await getDocs(collection(db, 'favorites'), orderBy("score"), where("userId", "==", loggedInUserId()));
       const favoriteShows = [];
   
       for (const doc of querySnapshot.docs) {

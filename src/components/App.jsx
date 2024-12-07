@@ -15,16 +15,11 @@ export default function App() {
   const user = useAuthentication();
   
 
-
   useEffect(() => {
     async function fetchFavorites() {
-      try {
-        const favoriteShows = await getMyFavorites(); 
-        favoriteShows.reverse()
-        setFavorites(favoriteShows); 
-      } catch (error) {
-        console.error('Error fetching favorites:', error);
-      }
+      const favoriteShows = await getMyFavorites(); 
+      favoriteShows.reverse()
+      setFavorites(favoriteShows); 
     }
 
     fetchFavorites();
