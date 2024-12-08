@@ -1,33 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "./Search.css"; // Make sure to import your CSS file
 import Search from "./Search";
-import Results from './Results';
 import { fetchShow, fetchShowById } from '../services/searchService';
+import ViewFavorites from './ViewFavorites';
 
-export default function Overlay({ user }) {
+export default function VisitOther() {
   const [showOverlay, setShowOverlay] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [tvShow, setTvShow] = useState('');
-  const [tvShows, setTvShows] = useState([]);
-
-  useEffect(() => {
-    if (searchTerm) {
-      fetchShow(searchTerm).then(setTvShow);
-    }
-  }, [searchTerm]);
+  const [searchUser, setSearchUser] = useState('');
 
   return (
     <>
-      <button onClick={() => setShowOverlay(true)}>Search</button>
+      <button onClick={() => setShowOverlay(true)}>View Other User</button>
 
       {/* Overlay */}
       {showOverlay && (
         <>
           <div className="overlay">
             <div className="overlay-content">
-              <h2>Search for a TV Show or Movie</h2>
-              <Search setter={setSearchTerm} text={"Search for show..."}/>
-              <Results user={user} shows={tvShow} tvShows={tvShows} />
+              <h2>Visit Another User's Page</h2>
+              <Search setter={setSearchUser} text={"Search via Email..."} />
+                {console.log(searchUser)}
+              <ViewFavorites user={searchUser} />
               <button onClick={() => setShowOverlay(false)}>Close</button>
             </div>
           </div>

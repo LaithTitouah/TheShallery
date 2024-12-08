@@ -12,6 +12,7 @@ export default function ViewFavorites({ user }) {
         return displayVisible && (
             <>
                 <div>
+                <button onClick={() => setDisplayVisibility(false)}>Close My Ratings</button>
                 <h2>----------------My Favorites----------------</h2>
                 {favorites.length > 0 ? (
                     
@@ -31,6 +32,7 @@ export default function ViewFavorites({ user }) {
                 ) : (
                     <p>No favorites yet!</p>
                 )}
+                <button onClick={() => setDisplayVisibility(false)}>Close My Ratings</button>
                 </div>
             </>
             );
@@ -43,8 +45,12 @@ export default function ViewFavorites({ user }) {
             setFavorites(favoriteShows); 
         }
         fetchFavorites();
+        console.log(user.uid);
         if (user.uid == loggedInUserId()) {
             console.log("This is my page")
+            setRemoveVisibility(true);
+        } else {
+            console.log("This is NOT my page")
             setRemoveVisibility(true);
         };
         setDisplayVisibility(true);
@@ -66,7 +72,7 @@ export default function ViewFavorites({ user }) {
                     <DisplayFavorites />
                 </div>
             ) : (
-                <h3>Please Log In to view your Ratings.</h3>
+                <></>
             )}
         </div>  
     )

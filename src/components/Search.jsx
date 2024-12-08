@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Search.css"; // Make sure to import your CSS file
 
-export default function Search( { setter }) {
+export default function Search( { setter, text }) {
     const [term, setTerm] = useState("");
 
     function submit(e) {
@@ -14,7 +14,7 @@ export default function Search( { setter }) {
         <form onSubmit={submit}> 
             <input 
             type="text" 
-            placeholder="Search for show..."
+            placeholder={text}
             value={term}
             onChange={(e) => setTerm(e.target.value)}
             />
