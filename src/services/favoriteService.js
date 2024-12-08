@@ -7,6 +7,7 @@ import {
     query,
     getDocs,
     setDoc,
+    deleteDoc,
     orderBy,
     limit,
     where
@@ -45,4 +46,16 @@ export async function saveFavorite(showId, selectedScore) {
     console.log("Favorite added",  result);
 
     return true
+}
+
+export async function deleteFavorite(showId) {
+
+  const userId = loggedInUserId();
+  const result = 
+      await deleteDoc(doc(db, "favorites", `${showId}.${userId}`), {
+  });
+
+  console.log("Favorite added",  result);
+
+  return true
 }
