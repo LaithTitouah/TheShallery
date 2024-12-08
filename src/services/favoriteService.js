@@ -6,17 +6,16 @@ import {
     doc,
     query,
     getDocs,
-    addDoc,
     setDoc,
+    deleteDoc,
     orderBy,
     limit,
-    Timestamp,
-    where
+    where,
   } from "firebase/firestore"
 
   export async function getMyFavorites() {
     try {
-      const querySnapshot = await getDocs(collection(db, 'favorites'), orderBy("score"), where("userId", "==", loggedInUserId()));
+      const querySnapshot = await getDocs(query(collection(db, 'favorites'), orderBy("score"), where("userId", "==", loggedInUserId())));
       const favoriteShows = [];
   
       for (const doc of querySnapshot.docs) {
@@ -36,7 +35,7 @@ export async function saveFavorite(showId, selectedScore) {
 
     const userId = loggedInUserId();
     const result = 
-        await setDoc(doc(db, "favorites", `${showId}.${userId}`), {
+        await setDoc(doc(db, "favorites", `${showId}_${userId}`), {
         showId: showId,
         userId: userId,
         score: selectedScore,
@@ -47,4 +46,20 @@ export async function saveFavorite(showId, selectedScore) {
     console.log("Favorite added",  result);
 
     return true
+}
+
+export async function deleteFavorite({ showId }) {
+  try {
+    const userId = loggedInUserId(); // Ensure this function returns the correct user ID
+
+    // Delete the document from Firestore
+    await deleteDoc(doc(db, "favorites", `${showId}`));
+
+    console.log("Favorite Deleted:", {showId});
+    return true;
+  } catch (error) {
+    console.error("Error deleting favorite:", error);
+
+  return false;
+  };
 }

@@ -1,0 +1,38 @@
+header {
+    background-color: red;
+    
+}
+#headersection1 {
+    padding:20px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#headersection2 {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    background-color: rgba(255, 165, 0, 0.9);
+    padding: 20px;
+    z-index: 2;
+    text-align: center;
+    border-radius: 10px;
+}
+/* We need to make css better for headersection2
+*/
+
+  #headersection3 nav {
+    margin-top: -70px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #ddd;
+  }
+  
+  #headersection3 nav span {
+    margin: 0 10px;
+    cursor: pointer;
+  }
