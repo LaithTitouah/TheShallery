@@ -1,7 +1,6 @@
 {
   "hosting": {
-    "site": "viddylist",
-    "public": "dist",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
