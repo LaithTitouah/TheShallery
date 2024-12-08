@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { getMyFavorites } from "../services/favoriteService";
-import { login, logout, useAuthentication } from '../services/authService';
+import { loggedInUserId } from "../services/authService";
 
-export default function ViewFavorites() {
+export default function ViewFavorites({ user }) {
     const [favorites, setFavorites] = useState([]);
-    const user = useAuthentication();
     const [displayVisible, setDisplayVisibility] = useState(false);
-
+    const [removeVisable, setRemoveVisibility] = useState(false);
     
     function DisplayFavorites() {
         return displayVisible && (
@@ -21,6 +20,11 @@ export default function ViewFavorites() {
                         <p>Rating: {fav.score}/10</p>
                         <h3>{fav.name}</h3>
                         <p dangerouslySetInnerHTML={{ __html: fav.summary }}></p>
+                        <p>
+                            {removeVisable ?
+                            <button>Remove Entry Above</button> : ""
+                            }
+                        </p>
                     </div>
                     ))
                 ) : (
@@ -32,26 +36,30 @@ export default function ViewFavorites() {
     }
 
     async function UpdateFavorites() {
-      async function fetchFavorites() {
-        const favoriteShows = await getMyFavorites(); 
-        favoriteShows.reverse()
-        setFavorites(favoriteShows); 
-      }
-      fetchFavorites();
-      setDisplayVisibility(true);
+        async function fetchFavorites() {
+            const favoriteShows = await getMyFavorites(); 
+            favoriteShows.reverse()
+            setFavorites(favoriteShows); 
+        }
+        fetchFavorites();
+        if (user.uid == loggedInUserId()) {
+            console.log("This is my page")
+            setRemoveVisibility(true);
+        };
+        setDisplayVisibility(true);
 
-      return console.log("Favorites Updated");
+        return console.log("Favorites Updated");
     }; 
 
     return (
         <div>
             {user ? (
                 <div>
-                    <button onClick={UpdateFavorites}>ViewFavorites</button>
+                    <button onClick={UpdateFavorites}>View My Ratings</button>
                     <DisplayFavorites />
                 </div>
             ) : (
-                <h3>Please Log In to view your favorites.</h3>
+                <h3>Please Log In to view your Ratings.</h3>
             )}
         </div>  
     )
