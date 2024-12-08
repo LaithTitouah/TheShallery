@@ -26,7 +26,7 @@ const Header = () => {
         </section>
         <section id = "headersection2">
           <h1>Welcome to the Shallery!!</h1>
-          <h2>Lets see if you got good taste</h2>
+          <h2>Display Your TV Taste</h2>
         </section>
         <section id ="headersection3">
           <nav>
@@ -43,25 +43,3 @@ const Header = () => {
     );
   };
 export default Header;
-
-
-// export default function Header({ user }) {
-//   return (
-//     <>
-//         <header>
-//         <div>
-//             {user ? (
-//             <>
-//                 <p>Welcome, {user.displayName}</p>
-//                 <button onClick={logout}>Sign Out</button>
-//             </>
-//             ) : (
-//             <button onClick={login}>Sign In with Google</button>
-//             )}
-//         </div>
-//         </header>
-//         <h1>Shallery</h1>
-
-//     </>
-//   );
-// }
