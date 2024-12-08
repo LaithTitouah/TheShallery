@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { getMyFavorites } from "../services/favoriteService";
 import { loggedInUserId } from "../services/authService";
+import { deleteFavorite } from "../services/favoriteService";
 
 export default function ViewFavorites({ user }) {
     const [favorites, setFavorites] = useState([]);
     const [displayVisible, setDisplayVisibility] = useState(false);
     const [removeVisable, setRemoveVisibility] = useState(false);
-    
+
     function DisplayFavorites() {
         return displayVisible && (
             <>
@@ -22,7 +23,7 @@ export default function ViewFavorites({ user }) {
                         <p dangerouslySetInnerHTML={{ __html: fav.summary }}></p>
                         <p>
                             {removeVisable ?
-                            <button>Remove Entry Above</button> : ""
+                            <button onClick={() => Delete(fav.id)}>Remove Entry Above</button> : ""
                             }
                         </p>
                     </div>
@@ -50,6 +51,12 @@ export default function ViewFavorites({ user }) {
 
         return console.log("Favorites Updated");
     }; 
+
+    async function Delete(id) {
+        console.log("Deleting favorite with id:", id);
+        deleteFavorite({showId:id});
+        UpdateFavorites();
+    }
 
     return (
         <div>

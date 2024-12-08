@@ -1,5 +1,6 @@
 import { db } from "../firebaseConfig";
 import { loggedInUserId } from "./authService"
+import { getAuth } from "firebase/auth";
 import { fetchShowById } from "../services/searchService";
 import {
     collection,
@@ -10,7 +11,7 @@ import {
     deleteDoc,
     orderBy,
     limit,
-    where
+    where,
   } from "firebase/firestore"
 
   export async function getMyFavorites() {
@@ -35,7 +36,7 @@ export async function saveFavorite(showId, selectedScore) {
 
     const userId = loggedInUserId();
     const result = 
-        await setDoc(doc(db, "favorites", `${showId}.${userId}`), {
+        await setDoc(doc(db, "favorites", `${showId}_${userId}`), {
         showId: showId,
         userId: userId,
         score: selectedScore,
@@ -48,14 +49,20 @@ export async function saveFavorite(showId, selectedScore) {
     return true
 }
 
-export async function deleteFavorite(showId) {
+export async function deleteFavorite({ showId }) {
+  try {
+    const userId = loggedInUserId(); // Ensure this function returns the correct user ID
+    const docPath = `${showId}_${userId}`;
 
-  const userId = loggedInUserId();
-  const result = 
-      await deleteDoc(doc(db, "favorites", `${showId}.${userId}`), {
-  });
+    const auth = getAuth();
+    console.log("Current User:", auth.currentUser);
+    // Delete the document from Firestore
+    await deleteDoc(doc(db, "favorites", docPath));
 
-  console.log("Favorite added",  result);
-
-  return true
+    console.log("Favorite Deleted:", docPath);
+    return true;
+  } catch (error) {
+    console.error("Error deleting favorite:", error);
+  return false;
+  };
 }
