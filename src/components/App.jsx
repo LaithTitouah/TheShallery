@@ -11,10 +11,10 @@ import ViewFavorites from './ViewFavorites';
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [tvShow, setTvShow] = useState('');
-  const [tvShows, setTvShows] = useState([]);
-  const user = useAuthentication();
+  const [tvShows, setTvShows] = useSt
 
-  useEffect(() => {
+  useEffect(() => {ate([]);
+  const user = useAuthentication();
     if (searchTerm) {
       fetchShow(searchTerm).then(setTvShow);
     }
