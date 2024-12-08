@@ -3,28 +3,30 @@ import './App.css';
 import Search from './Search';
 import Results from './Results';
 import Header from './Header';
-import TvShowList from './TvShowList';
-import { login, logout, useAuthentication } from "../services/authService";
-import { fetchShowById, fetchShow } from "../services/searchService"
-
+import { login, logout, useAuthentication } from '../services/authService';
+import { fetchShow, fetchShowById } from '../services/searchService';
+import { getMyFavorites } from '../services/favoriteService';
+import ViewFavorites from './ViewFavorites';
 
 export default function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [tvShow, setTvShows] = useState("")
-  const user = useAuthentication();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [tvShow, setTvShow] = useState('');
+  const [tvShows, setTvShows] = useSt
 
-  useEffect(() => {
+  useEffect(() => {ate([]);
+  const user = useAuthentication();
     if (searchTerm) {
-    fetchShow(searchTerm).then(setTvShows);
+      fetchShow(searchTerm).then(setTvShow);
     }
-}, [searchTerm]);
+  }, [searchTerm]);
+
+
   return (
     <>
-      <Header/>
-      <h1>PlayScore</h1>
-      <Search setter={setSearchTerm} /> {/* when setter is called, put setSearchTerm into it and put it as the search */}
-      <Results shows={tvShow}/>
-      <TvShowList />
+      <Header user={user} />
+      <Search setter={setSearchTerm} />
+      <Results user={user} shows={tvShow} tvShows={tvShows} />
+      <ViewFavorites />
     </>
   );
 }
