@@ -2,6 +2,7 @@ import './Header.css'
 import React from "react";
 import'./Search.css';
 import { login, logout, useAuthentication } from "../services/authService";
+import Overlay from './SearchOverlay';
 
 const Header = () => {
     const user = useAuthentication(); 
@@ -34,7 +35,7 @@ const Header = () => {
             <span> Completed </span>
             <span> On Hold </span>
             <span>Dropped </span>
-            <span> Search!</span>
+            <span><Overlay user={user} /></span>
           </nav>
         </section>
         
