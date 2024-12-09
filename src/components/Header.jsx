@@ -1,11 +1,10 @@
-import './Header.css'
-import React from "react";
-import'./Search.css';
-import { login, logout, useAuthentication } from "../services/authService";
+import React, { useState } from 'react';
 import Overlay from './SearchOverlay';
+import { login, logout, useAuthentication } from '../services/authService';
+import './Header.css';
 
 const Header = () => {
-    const user = useAuthentication(); 
+const user = useAuthentication(); 
   
     return (
       <header>
