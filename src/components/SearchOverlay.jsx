@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Search.css"; // Make sure to import your CSS file
 import Search from "./Search";
 import Results from './Results';
-import { fetchShow, fetchShowById } from '../services/searchService';
+import { fetchShow } from '../services/searchService';
 import './SearchOverlay.css'
 
 export default function Overlay({ user }) {

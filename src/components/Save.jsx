@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { saveFavorite } from "../services/favoriteService";
 
-export default function Save({ user, shows }) {
+export default function Save({ user, shows, updateFavorites }) {
     const [saving, setSaving] = useState(false);
     const [saved, setSaved] = useState(false);
     const [selectedScore, setSelectedScore] = useState("");
@@ -17,11 +17,12 @@ export default function Save({ user, shows }) {
     async function save() {
       try {
         setSaving(true);
-        await saveFavorite(shows.showId, parseInt(selectedScore));
+        await saveFavorite(shows, parseInt(selectedScore));
         setSaved(true);
       
       } finally {
         setSaving(false);
+        updateFavorites();
       }
     }
   
@@ -29,17 +30,6 @@ export default function Save({ user, shows }) {
       setSelectedScore(event.target.value);
     }
     
-    async function save() {
-        try {
-          setSaving(true);
-          await saveFavorite(shows.showId, parseInt(selectedScore));
-          setSaved(true);
-        
-        } finally {
-          setSaving(false);
-        }
-      }
-
     function ButtonScore() {
         return (
         dropdownVisible && (
