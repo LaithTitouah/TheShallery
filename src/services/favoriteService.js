@@ -9,7 +9,6 @@ import {
     setDoc,
     deleteDoc,
     orderBy,
-    limit,
     where,
   } from "firebase/firestore"
 

@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Overlay from './SearchOverlay';
 import { login, logout, useAuthentication } from '../services/authService';
 import './Header.css';
