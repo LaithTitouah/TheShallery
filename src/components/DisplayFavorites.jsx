@@ -3,7 +3,7 @@ import Save from "./Save";
 import {useAuthentication } from '../services/authService';
 
 
-export default function Display({ favorites, displayVisible, removeVisable, setDisplayVisibility, UpdateFavorites }) {
+export default function Display({ favorites, displayVisible, removeVisable, setDisplayVisibility, updateFavorites }) {
     const user = useAuthentication();
 
     function DisplayFavorites() {
@@ -20,7 +20,7 @@ export default function Display({ favorites, displayVisible, removeVisable, setD
                         <div>
                             <p>Rating: {fav.score}/10</p>
                             {removeVisable ?
-                            <Save user={user} shows={fav.id.split("_")[0]} UpdateFavorites={UpdateFavorites}/> : ""
+                            <Save user={user} shows={fav.id.split("_")[0]} updateFavorites={updateFavorites}/> : ""
                             }
                         </div>
                         <h3>{fav.name}</h3>
@@ -44,7 +44,7 @@ export default function Display({ favorites, displayVisible, removeVisable, setD
     async function Delete(id) {
         // console.log("Deleting favorite with id:", id);
         deleteFavorite({showId:id});
-        UpdateFavorites();
+        updateFavorites();
     }
 
     return <DisplayFavorites />

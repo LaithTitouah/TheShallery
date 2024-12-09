@@ -8,7 +8,7 @@ export default function ViewFavorites({ user }) {
     const [displayVisible, setDisplayVisibility] = useState(false);
     const [removeVisable, setRemoveVisibility] = useState(false);
 
-    async function UpdateFavorites() {
+    async function updateFavorites() {
         async function fetchFavorites() {
             console.log(user.uid)
             const favoriteShows = await getMyFavorites({ id:user.uid }); 
@@ -23,8 +23,8 @@ export default function ViewFavorites({ user }) {
         return console.log("Favorites Updated");
     };
 
-    async function MyFavorites() {
-        UpdateFavorites()
+    async function myFavorites() {
+        updateFavorites()
         setDisplayVisibility((prev) => !prev);
     };  
 
@@ -32,13 +32,13 @@ export default function ViewFavorites({ user }) {
         <div>
             {user ? (
                 <div>
-                    <button onClick={MyFavorites}>View My Ratings</button>
+                    <button onClick={myFavorites}>View My Ratings</button>
                     <Display 
                     favorites={favorites} 
                     displayVisible={displayVisible} 
                     removeVisable={removeVisable}
                     setDisplayVisibility={setDisplayVisibility}
-                    UpdateFavorites={UpdateFavorites}
+                    updateFavorites={updateFavorites}
                     />
                 </div>
             ) : (
