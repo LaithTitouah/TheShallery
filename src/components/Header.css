@@ -3,6 +3,12 @@ header {
   color: black;
 }
 
+@media(max-width: 560px) {
+  #headersection1 {
+    flex-direction: column;
+  }
+}
+
 #headersection1 {
   display: flex;
   align-items: center;
