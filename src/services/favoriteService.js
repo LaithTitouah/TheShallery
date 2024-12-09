@@ -13,9 +13,10 @@ import {
     where,
   } from "firebase/firestore"
 
-  export async function getMyFavorites() {
+  export async function getMyFavorites({ id }) {
     try {
-      const querySnapshot = await getDocs(query(collection(db, 'favorites'), orderBy("score"), where("userId", "==", loggedInUserId())));
+      console.log(id)
+      const querySnapshot = await getDocs(query(collection(db, 'favorites'), orderBy("score"), where("userId", "==", `${id}`)));
       const favoriteShows = [];
   
       for (const doc of querySnapshot.docs) {

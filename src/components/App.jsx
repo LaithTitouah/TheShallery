@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from "react";
 import Header from './Header';
 import {useAuthentication } from '../services/authService';
 import ViewFavorites from './ViewFavorites';
