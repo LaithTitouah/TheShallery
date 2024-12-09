@@ -12,8 +12,8 @@ Here is the Hosting URL:
 
 ## Authors and Collaborators
 This project was created by:
-* Laith Titouah
 * Jacob Martinez
+* Laith Titouah
 * Sebastian Lange
 * Nikolas Kunstmann
 
