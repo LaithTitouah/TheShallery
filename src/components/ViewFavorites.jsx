@@ -10,8 +10,8 @@ export default function ViewFavorites({ user }) {
 
     async function updateFavorites() {
         async function fetchFavorites() {
-            console.log(user.uid)
-            const favoriteShows = await getMyFavorites({ id:user.uid }); 
+            console.log(user.email)
+            const favoriteShows = await getMyFavorites({ id:user.email }); 
             favoriteShows.reverse()
             setFavorites(favoriteShows); 
         }
@@ -42,7 +42,7 @@ export default function ViewFavorites({ user }) {
                     />
                 </div>
             ) : (
-                <></>
+                <p>Log-in to start adding to your list!</p>
             )}
         </div>  
     )

@@ -13,6 +13,10 @@ export function loggedInUserDisplayName() {
     return auth.currentUser.displayName;
 }
 
+export function loggedInUserEmail() {
+  return auth.currentUser.email;
+}
+
 export function loggedInUserId() {
     return auth.currentUser.uid;
 }
