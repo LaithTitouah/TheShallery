@@ -19,6 +19,7 @@
     text-align: center;
     width: 300px;
     z-index: 1010; /* Make sure the content is above the blurred background */
+    max-height: 80vh;
   }
   
   /* Input and button styling */
@@ -53,3 +54,25 @@
     z-index: 999; /* Behind the overlay but above other content */
   }
   
+  #results {
+    max-height: 50vh;
+    overflow-y: scroll;
+  }
+
+  #result {
+    font-size: 1vw;
+    display: grid;
+    grid-template: auto auto / auto auto auto;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  #savebutton {
+    max-width: 5vw;
+    font-size: 1vw;
+  }
+
+  img {
+    max-height: 15vh;
+  }

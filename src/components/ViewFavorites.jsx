@@ -1,58 +1,44 @@
 import { useState } from "react";
 import { getMyFavorites } from "../services/favoriteService";
-import { login, logout, useAuthentication } from '../services/authService';
-import './ViewFavorites.css';
+import { loggedInUserId } from "../services/authService";
+import Display from "./DisplayFavorites";
 
-export default function ViewFavorites() {
+export default function ViewFavorites({ user }) {
     const [favorites, setFavorites] = useState([]);
-    const user = useAuthentication();
     const [displayVisible, setDisplayVisibility] = useState(false);
-
-    
-    function DisplayFavorites() {
-        return displayVisible && (
-            <>
-                <div id="listoffavorites">
-                <h2>----------------My Favorites----------------</h2>
-                {favorites.length > 0 ? (
-                    
-                    favorites.map((fav) => (
-                    <div key={fav.id}>
-                        <img src={fav.image} alt={fav.name} />
-                        <span>Rating: {fav.score}/10</span>
-                        <h3>{fav.name}</h3>
-                        <p dangerouslySetInnerHTML={{ __html: fav.summary }}></p>
-                    </div>
-                    ))
-                ) : (
-                    <p>No favorites yet!</p>
-                )}
-                </div>
-            </>
-            );
-    }
+    const [removeVisable, setRemoveVisibility] = useState(false);
 
     async function UpdateFavorites() {
-      async function fetchFavorites() {
-        const favoriteShows = await getMyFavorites(); 
-        favoriteShows.reverse()
-        setFavorites(favoriteShows); 
-      }
-      fetchFavorites();
-      setDisplayVisibility(true);
+        async function fetchFavorites() {
+            console.log(user.uid)
+            const favoriteShows = await getMyFavorites({ id:user.uid }); 
+            favoriteShows.reverse()
+            setFavorites(favoriteShows); 
+        }
+        fetchFavorites();
+        if (user.uid == loggedInUserId()) {
+            console.log("This is my page")
+            setRemoveVisibility(true);
+        };
+        setDisplayVisibility((prev) => !prev);
 
-      return console.log("Favorites Updated");
+        return console.log("Favorites Updated");
     }; 
 
     return (
         <div>
             {user ? (
                 <div>
-                    <button onClick={UpdateFavorites}>ViewFavorites</button>
-                    <DisplayFavorites />
+                    <button onClick={UpdateFavorites}>View My Ratings</button>
+                    <Display 
+                    favorites={favorites} 
+                    displayVisible={displayVisible} 
+                    removeVisable={removeVisable}
+                    setDisplayVisibility={setDisplayVisibility}
+                    />
                 </div>
             ) : (
-                <h3>Please Log In to view your favorites.</h3>
+                <></>
             )}
         </div>  
     )

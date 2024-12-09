@@ -1,8 +1,10 @@
 import './App.css';
+import React, { useState } from "react";
 import Header from './Header';
-import { login, logout, useAuthentication } from '../services/authService';
+import {useAuthentication } from '../services/authService';
 import ViewFavorites from './ViewFavorites';
-import Overlay from './SearchOverlay';
+import VisitOther from './ViewOther';
+
 
 export default function App() {
   const user = useAuthentication();
@@ -10,7 +12,8 @@ export default function App() {
   return (
     <>
       <Header user={user} />
-      <ViewFavorites />
+      <ViewFavorites user={user} />
+      <VisitOther />
     </>
   );
 }

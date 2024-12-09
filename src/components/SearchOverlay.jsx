@@ -14,19 +14,22 @@ export default function Overlay({ user }) {
   useEffect(() => {
     if (searchTerm) {
       fetchShow(searchTerm).then(setTvShow);
+      console.log(fetchShow(searchTerm))
     }
   }, [searchTerm]);
 
+  
   return (
     <>
-      <button id="OverlayButton" onClick={() => setShowOverlay(true)}>Search</button>
+      <button onClick={() => setShowOverlay(true)}>Search</button>
 
       {/* Overlay */}
       {showOverlay && (
         <>
           <div className="overlay">
             <div className="overlay-content">
-              <Search setter={setSearchTerm} />
+              <h2>Search for a TV Show or Movie</h2>
+              <Search setter={setSearchTerm} text={"Search for show..."}/>
               <Results user={user} shows={tvShow} tvShows={tvShows} />
               <button onClick={() => setShowOverlay(false)}>Close</button>
             </div>
