@@ -23,6 +23,8 @@
 
     .overlay .overlay-content #result h2{
       max-width: 10vh;
+      max-height: 5vh;
+      overflow-y: auto;
     }
 
     .overlay .overlay-content #result #savebutton {
@@ -70,13 +72,13 @@
   
   #results {
     max-height: 50vh;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   #result {
     font-size: 1vw;
     display: grid;
-    grid-template: auto auto / auto auto auto;
+    grid-template: auto auto / auto 10vw auto;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
