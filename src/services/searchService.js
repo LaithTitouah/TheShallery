@@ -1,4 +1,4 @@
-export async function fetchShowxxxx(query) {
+export async function singlefetchShow(query) {
     return fetch(`https://api.tvmaze.com/singlesearch/shows?q=${query}`)
         .then(response => response.json())
         .then(data => {
@@ -40,7 +40,15 @@ export async function fetchShow(query) {
     return fetch(`https://api.tvmaze.com/search/shows?q=${query}`)
         .then(response => response.json())
         .then(data => {
+            if (!data) {
+                return {
+                    name: "Unknown Show",
+                    image: "https://static.tvmaze.com/uploads/images/medium_portrait/467/1168267.jpg",
+                    showId: null,
 
+                };
+            }
+            
             return data.map((item, index) => ({
 
                 index: index,

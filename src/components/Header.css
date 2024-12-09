@@ -1,7 +1,12 @@
-
 header {
   background-color: #fff5d7;
   color: black;
+}
+
+@media(max-width: 560px) {
+  #headersection1 {
+    flex-direction: column;
+  }
 }
 
 #headersection1 {
