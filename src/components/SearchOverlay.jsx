@@ -3,6 +3,7 @@ import "./Search.css"; // Make sure to import your CSS file
 import Search from "./Search";
 import Results from './Results';
 import { fetchShow, fetchShowById } from '../services/searchService';
+import './SearchOverlay.css'
 
 export default function Overlay({ user }) {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -21,7 +22,6 @@ export default function Overlay({ user }) {
   return (
     <>
       <button onClick={() => setShowOverlay(true)}>Search</button>
-      
 
       {/* Overlay */}
       {showOverlay && (

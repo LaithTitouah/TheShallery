@@ -1,38 +1,57 @@
+
 header {
-    background-color: red;
-    
+  background-color: #fff5d7;
+  color: black;
 }
+
 #headersection1 {
-    padding:20px;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#headersection1 h1 {
+  font-size: 45px;
+  color: black;
+  padding-left: 30px;
+
+}
+
+#sign-in {
+  display: flex;
+  align-items: center;
+  gap: 1em; 
+}
+
+.welcome {
+  margin: 0;
+  font-size: 1.2em;
+  color: black; 
+
+}
+
+.auth-button {
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  background-color: #ff5e6c;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.auth-button.signout:hover,
+.auth-button.signin:hover {
+  background-color: #ffaaab;
 }
 #headersection2 {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    background-color: rgba(255, 165, 0, 0.9);
-    padding: 20px;
-    z-index: 2;
-    text-align: center;
-    border-radius: 10px;
+  display:flex;
+  justify-content: center;
 }
-/* We need to make css better for headersection2
-*/
+#headersection2 button {
+  padding:20px;
+  padding-left: 80px;
+  padding-right: 80px;
+  margin: 10px;
+}
 
-  #headersection3 nav {
-    margin-top: -70px;
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    background-color: #ddd;
-  }
-  
-  #headersection3 nav span {
-    margin: 0 10px;
-    cursor: pointer;
-  }
