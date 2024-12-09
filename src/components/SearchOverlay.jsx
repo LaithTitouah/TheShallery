@@ -9,7 +9,6 @@ export default function Overlay({ user }) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [tvShow, setTvShow] = useState('');
-  const [tvShows, setTvShows] = useState([]);
 
   useEffect(() => {
     if (searchTerm) {
@@ -30,7 +29,7 @@ export default function Overlay({ user }) {
             <div className="overlay-content">
               <h2>Search for a TV Show or Movie</h2>
               <Search setter={setSearchTerm} text={"Search for show..."}/>
-              <Results user={user} shows={tvShow} tvShows={tvShows} />
+              <Results user={user} shows={tvShow} />
               <button onClick={() => setShowOverlay(false)}>Close</button>
             </div>
           </div>

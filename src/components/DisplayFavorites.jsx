@@ -1,6 +1,7 @@
 import { deleteFavorite } from "../services/favoriteService";
 import Save from "./Save";
 import {useAuthentication } from '../services/authService';
+import "./ViewFavorites.css"
 
 
 export default function Display({ favorites, displayVisible, removeVisable, setDisplayVisibility, updateFavorites }) {
@@ -9,15 +10,15 @@ export default function Display({ favorites, displayVisible, removeVisable, setD
     function DisplayFavorites() {
         return displayVisible && (
             <>
+                <button onClick={() => setDisplayVisibility(false)}>Close Ratings</button>
                 <div id="listoffavorites">
-                <button onClick={() => setDisplayVisibility(false)}>Close My Ratings</button>
                 <h2>----------------My Favorites----------------</h2>
                 {favorites.length > 0 ? (
                     
                     favorites.map((fav) => (
                     <div key={fav.id}>
                         <img src={fav.image} alt={fav.name} />
-                        <div>
+                        <div id="rating">
                             <p>Rating: {fav.score}/10</p>
                             {removeVisable ?
                             <Save user={user} shows={fav.id.split("_")[0]} updateFavorites={updateFavorites}/> : ""
@@ -35,8 +36,8 @@ export default function Display({ favorites, displayVisible, removeVisable, setD
                 ) : (
                     <p>No favorites yet!</p>
                 )}
-                <button onClick={() => setDisplayVisibility(false)}>Close My Ratings</button>
                 </div>
+                <button onClick={() => setDisplayVisibility(false)}>Close Ratings</button>
             </>
             );
     };
