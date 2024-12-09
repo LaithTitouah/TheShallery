@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getMyFavorites } from "../services/favoriteService";
 import { login, logout, useAuthentication } from '../services/authService';
+import './ViewFavorites.css';
 
 export default function ViewFavorites() {
     const [favorites, setFavorites] = useState([]);
@@ -11,14 +12,14 @@ export default function ViewFavorites() {
     function DisplayFavorites() {
         return displayVisible && (
             <>
-                <div>
+                <div id="listoffavorites">
                 <h2>----------------My Favorites----------------</h2>
                 {favorites.length > 0 ? (
                     
                     favorites.map((fav) => (
                     <div key={fav.id}>
                         <img src={fav.image} alt={fav.name} />
-                        <p>Rating: {fav.score}/10</p>
+                        <span>Rating: {fav.score}/10</span>
                         <h3>{fav.name}</h3>
                         <p dangerouslySetInnerHTML={{ __html: fav.summary }}></p>
                     </div>

@@ -1,67 +1,49 @@
-import './Header.css'
-import React from "react";
-import'./Search.css';
-import { login, logout, useAuthentication } from "../services/authService";
+import React, { useState } from 'react';
 import Overlay from './SearchOverlay';
+import { login, logout, useAuthentication } from '../services/authService';
+import './Header.css';
 
 const Header = () => {
-    const user = useAuthentication(); 
-  
-    return (
-      <header>
-        <section id = "headersection1">
-          <div>
-            <h1>header!</h1>
-          </div>
-          <div>
-            {user ? (
-              <>
-                <p>Welcome, {user.displayName}</p>
-                <button onClick={logout}>Sign Out</button>
-              </>
-            ) : (
-              <button onClick={login}>Sign In with Google</button>
-            )}
-          </div>
-        </section>
-        <section id = "headersection2">
-          <h1>Welcome to the Shallery!!</h1>
-          <h2>Lets see if you got good taste</h2>
-        </section>
-        <section id ="headersection3">
-          <nav>
-            <span>All T.V</span>
-            <span>Currently Watching</span>
-            <span> Completed </span>
-            <span> On Hold </span>
-            <span>Dropped </span>
-            <span><Overlay user={user} /></span>
-          </nav>
-        </section>
-        
-      </header>
-    );
-  };
+  const user = useAuthentication();
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  return (
+    <header>
+      <section id="headersection1">
+        <h1>Shallery!!</h1>
+        <div id="sign-in">
+          {user ? (
+            <>
+              <p className="welcome">Welcome, {user.displayName}!</p>
+              <button onClick={logout} className="auth-button signout">Sign Out</button>
+            </>
+          ) : (
+            <button onClick={login} className="auth-button signin">Sign In with Google</button>
+          )}
+        </div>
+      </section>
+      <section id="headersection2">
+          <h2>Please click this button to add shows to your shallist:</h2>
+          <button onClick={() => setShowOverlay(!showOverlay)}>{showOverlay ? 'Hide Overlay' : 'Show Overlay'}</button>
+        {showOverlay && <Overlay user={user} />}
+      </section>
+    </header>
+  );
+};
+
 export default Header;
 
 
-// export default function Header({ user }) {
-//   return (
-//     <>
-//         <header>
-//         <div>
-//             {user ? (
-//             <>
-//                 <p>Welcome, {user.displayName}</p>
-//                 <button onClick={logout}>Sign Out</button>
-//             </>
-//             ) : (
-//             <button onClick={login}>Sign In with Google</button>
-//             )}
-//         </div>
-//         </header>
-//         <h1>Shallery</h1>
 
-//     </>
-//   );
-// }
+
+
+
+
+
+
+
+
+
+
+
+
