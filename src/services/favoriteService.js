@@ -1,5 +1,5 @@
 import { db } from "../firebaseConfig";
-import { loggedInUserId } from "./authService"
+import { loggedInUserEmail } from "./authService"
 import { fetchShowById } from "../services/searchService";
 import {
     collection,
@@ -33,7 +33,8 @@ import {
 
 export async function saveFavorite(showId, selectedScore) {
 
-    const userId = loggedInUserId();
+    const userId = loggedInUserEmail();
+    console.log(userId)
     const result = 
         await setDoc(doc(db, "favorites", `${showId}_${userId}`), {
         showId: showId,
@@ -48,7 +49,6 @@ export async function saveFavorite(showId, selectedScore) {
 
 export async function deleteFavorite({ showId }) {
   try {
-    const userId = loggedInUserId(); // Ensure this function returns the correct user ID
 
     // Delete the document from Firestore
     await deleteDoc(doc(db, "favorites", `${showId}`));

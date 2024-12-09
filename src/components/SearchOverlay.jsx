@@ -20,7 +20,7 @@ export default function Overlay({ user }) {
   
   return (
     <>
-      <button onClick={() => setShowOverlay(true)}>Search</button>
+      <button onClick={() => setShowOverlay(true)}>Add a Show</button>
 
       {/* Overlay */}
       {showOverlay && (

@@ -21,7 +21,7 @@ export default function Display({ favorites, displayVisible, removeVisable, setD
                         <div id="rating">
                             <p>Rating: {fav.score}/10</p>
                             {removeVisable ?
-                            <Save user={user} shows={fav.id.split("_")[0]} updateFavorites={updateFavorites}/> : ""
+                            <Save user={user} shows={fav.id.split("_")[0]} updateFavorites={updateFavorites} inMy={removeVisable}/> : ""
                             }
                         </div>
                         <h3>{fav.name}</h3>
