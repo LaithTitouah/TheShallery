@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./Search.css"; // Make sure to import your CSS file
 import Search from "./Search";
 import Results from './Results';
-import { fetchShow, fetchShowById } from '../services/searchService';
+import { fetchShow } from '../services/searchService';
+import './SearchOverlay.css'
 
 export default function Overlay({ user }) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [tvShow, setTvShow] = useState('');
-  const [tvShows, setTvShows] = useState([]);
 
   useEffect(() => {
     if (searchTerm) {
@@ -21,7 +21,6 @@ export default function Overlay({ user }) {
   return (
     <>
       <button onClick={() => setShowOverlay(true)}>Search</button>
-      
 
       {/* Overlay */}
       {showOverlay && (
@@ -30,7 +29,7 @@ export default function Overlay({ user }) {
             <div className="overlay-content">
               <h2>Search for a TV Show or Movie</h2>
               <Search setter={setSearchTerm} text={"Search for show..."}/>
-              <Results user={user} shows={tvShow} tvShows={tvShows} />
+              <Results user={user} shows={tvShow} />
               <button onClick={() => setShowOverlay(false)}>Close</button>
             </div>
           </div>

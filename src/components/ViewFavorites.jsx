@@ -8,7 +8,7 @@ export default function ViewFavorites({ user }) {
     const [displayVisible, setDisplayVisibility] = useState(false);
     const [removeVisable, setRemoveVisibility] = useState(false);
 
-    async function UpdateFavorites() {
+    async function updateFavorites() {
         async function fetchFavorites() {
             console.log(user.uid)
             const favoriteShows = await getMyFavorites({ id:user.uid }); 
@@ -19,22 +19,26 @@ export default function ViewFavorites({ user }) {
         if (user.uid == loggedInUserId()) {
             console.log("This is my page")
             setRemoveVisibility(true);
-        };
-        setDisplayVisibility((prev) => !prev);
-
+        }; 
         return console.log("Favorites Updated");
-    }; 
+    };
+
+    async function myFavorites() {
+        updateFavorites()
+        setDisplayVisibility((prev) => !prev);
+    };  
 
     return (
         <div>
             {user ? (
                 <div>
-                    <button onClick={UpdateFavorites}>View My Ratings</button>
+                    <button onClick={myFavorites}>View My Ratings</button>
                     <Display 
                     favorites={favorites} 
                     displayVisible={displayVisible} 
                     removeVisable={removeVisable}
                     setDisplayVisibility={setDisplayVisibility}
+                    updateFavorites={updateFavorites}
                     />
                 </div>
             ) : (

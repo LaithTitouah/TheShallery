@@ -1,0 +1,60 @@
+#listoffavorites {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+    padding: 20px;
+    background: linear-gradient(-45deg, #f4b41fa4,#feb200be,#e8aa1a);
+    background-size: 1200% 800%;
+    animation: gradient 15s ease infinite;
+  }
+  @keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+  }
+
+@media(max-width: 560px) {
+    #listoffavorites > div {
+        flex-direction: column;
+    }
+
+    #listoffavorites #rating p, #listoffavorites #rating button {
+        font-size: 2vh;
+    }
+
+    #savebutton {
+        max-width: 50vw;
+        font-size: 1vw;
+      }
+}
+  
+#listoffavorites > div {
+    display: flex; 
+    gap: 20px; 
+    align-items: center; 
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff5d7;
+    border: 5px solid #de9c01;
+    box-shadow: 5px 5px 5px #de9c01;
+}
+
+#listoffavorites img {
+    max-width: 150px; 
+    height: auto; 
+    border-radius: 8px;
+    border: 3px solid black;
+    box-shadow: 3px 3px 3px black;
+}
+
+#listoffavorites div p {
+    margin: 0;
+    font-size: min(2vw, 2vh);;
+    color: black;
+}
