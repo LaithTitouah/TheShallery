@@ -27,7 +27,7 @@ export default function Display({ favorites, displayVisible, removeVisable, setD
                         <p dangerouslySetInnerHTML={{ __html: fav.summary }}></p>
                         <p>
                             {removeVisable ?
-                            <button onClick={() => Delete(fav.id)}>Remove Entry Above</button> : ""
+                            <button onClick={() => deleteEntry(fav.id)}>Remove Entry Above</button> : ""
                             }
                         </p>
                     </div>
@@ -41,7 +41,7 @@ export default function Display({ favorites, displayVisible, removeVisable, setD
             );
     };
 
-    async function Delete(id) {
+    async function deleteEntry(id) {
         // console.log("Deleting favorite with id:", id);
         deleteFavorite({showId:id});
         updateFavorites();
