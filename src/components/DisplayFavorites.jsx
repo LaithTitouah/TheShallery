@@ -1,6 +1,11 @@
 import { deleteFavorite } from "../services/favoriteService";
+import Save from "./Save";
+import {useAuthentication } from '../services/authService';
 
-export default function Display({ favorites, displayVisible, removeVisable, setDisplayVisibility }) {
+
+export default function Display({ favorites, displayVisible, removeVisable, setDisplayVisibility, UpdateFavorites }) {
+    const user = useAuthentication();
+
     function DisplayFavorites() {
         return displayVisible && (
             <>
@@ -12,7 +17,12 @@ export default function Display({ favorites, displayVisible, removeVisable, setD
                     favorites.map((fav) => (
                     <div key={fav.id}>
                         <img src={fav.image} alt={fav.name} />
-                        <p>Rating: {fav.score}/10</p>
+                        <div>
+                            <p>Rating: {fav.score}/10</p>
+                            {removeVisable ?
+                            <Save user={user} shows={fav.id.split("_")[0]} UpdateFavorites={UpdateFavorites}/> : ""
+                            }
+                        </div>
                         <h3>{fav.name}</h3>
                         <p dangerouslySetInnerHTML={{ __html: fav.summary }}></p>
                         <p>

@@ -15,7 +15,7 @@ export default function Results({ user, shows }) {
                 <p>No image available</p>
             )}
             <h2>{show.name}</h2>
-            <Save user={user} shows={show}/>
+            <Save user={user} shows={show.showId}/>
         </div>
       ))}
     </div>

@@ -19,22 +19,26 @@ export default function ViewFavorites({ user }) {
         if (user.uid == loggedInUserId()) {
             console.log("This is my page")
             setRemoveVisibility(true);
-        };
-        setDisplayVisibility((prev) => !prev);
-
+        }; 
         return console.log("Favorites Updated");
-    }; 
+    };
+
+    async function MyFavorites() {
+        UpdateFavorites()
+        setDisplayVisibility((prev) => !prev);
+    };  
 
     return (
         <div>
             {user ? (
                 <div>
-                    <button onClick={UpdateFavorites}>View My Ratings</button>
+                    <button onClick={MyFavorites}>View My Ratings</button>
                     <Display 
                     favorites={favorites} 
                     displayVisible={displayVisible} 
                     removeVisable={removeVisable}
                     setDisplayVisibility={setDisplayVisibility}
+                    UpdateFavorites={UpdateFavorites}
                     />
                 </div>
             ) : (
