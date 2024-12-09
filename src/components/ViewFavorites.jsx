@@ -40,12 +40,12 @@ export default function ViewFavorites({ user }) {
 
     async function UpdateFavorites() {
         async function fetchFavorites() {
-            const favoriteShows = await getMyFavorites(); 
+            console.log(user.uid)
+            const favoriteShows = await getMyFavorites({ id:user.uid }); 
             favoriteShows.reverse()
             setFavorites(favoriteShows); 
         }
         fetchFavorites();
-        console.log(user.uid);
         if (user.uid == loggedInUserId()) {
             console.log("This is my page")
             setRemoveVisibility(true);
@@ -59,7 +59,7 @@ export default function ViewFavorites({ user }) {
     }; 
 
     async function Delete(id) {
-        console.log("Deleting favorite with id:", id);
+        // console.log("Deleting favorite with id:", id);
         deleteFavorite({showId:id});
         UpdateFavorites();
     }
