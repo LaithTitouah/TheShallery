@@ -12,7 +12,7 @@ export default function Display({ favorites, displayVisible, removeVisable, setD
             <>
                 <button onClick={() => setDisplayVisibility(false)}>Close Ratings</button>
                 <div id="listoffavorites">
-                <h2>----------------My Favorites----------------</h2>
+                <h2>----------------Favorites----------------</h2>
                 {favorites.length > 0 ? (
                     
                     favorites.map((fav) => (
