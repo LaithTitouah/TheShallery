@@ -41,8 +41,9 @@ export async function fetchShow(query) {
         .then(response => response.json())
         .then(data => {
 
-            return data.map(item => ({
+            return data.map((item, index) => ({
 
+                index: index,
                 name: item.show.name || "Unknown Show",
                 image: item.show.image ? item.show.image.medium : null,
                 showId: item.show.id || null,

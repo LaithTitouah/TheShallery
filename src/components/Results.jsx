@@ -60,8 +60,8 @@ export default function Results({ user, shows }) {
 
   return (
     <div id="results">
-      {shows.map((show) => (
-        <div id="result">
+      {shows.map(show => (
+        <div key={show.index} id="result">
             {show.image ? (
                 <img src={show.image} alt={show.name} />
             ) : (
