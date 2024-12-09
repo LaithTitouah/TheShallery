@@ -1,10 +1,10 @@
 import { deleteFavorite } from "../services/favoriteService";
-
+import "./ViewFavorites.css"
 export default function Display({ favorites, displayVisible, removeVisable, setDisplayVisibility }) {
     function DisplayFavorites() {
         return displayVisible && (
             <>
-                <div>
+                <div id="listoffavorites">
                 <button onClick={() => setDisplayVisibility(false)}>Close My Ratings</button>
                 <h2>----------------My Favorites----------------</h2>
                 {favorites.length > 0 ? (
