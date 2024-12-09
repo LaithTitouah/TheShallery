@@ -1,4 +1,4 @@
-export async function fetchShow(query) {
+export async function fetchShowxxxx(query) {
     return fetch(`https://api.tvmaze.com/singlesearch/shows?q=${query}`)
         .then(response => response.json())
         .then(data => {
@@ -12,6 +12,7 @@ export async function fetchShow(query) {
                 };
             }
             return {
+
                 name: data.name || "Unknown Show", 
                 image: data.image ? data.image.medium : null, 
                 showId: data.id || null,
@@ -33,4 +34,21 @@ export async function fetchShowById(id) {
         };
         
       });
-  }
+}
+
+export async function fetchShow(query) {
+    return fetch(`https://api.tvmaze.com/search/shows?q=${query}`)
+        .then(response => response.json())
+        .then(data => {
+
+            return data.map(item => ({
+
+                name: item.show.name || "Unknown Show",
+                image: item.show.image ? item.show.image.medium : null,
+                showId: item.show.id || null,
+
+            }));
+        });
+}
+
+

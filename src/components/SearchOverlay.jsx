@@ -13,12 +13,15 @@ export default function Overlay({ user }) {
   useEffect(() => {
     if (searchTerm) {
       fetchShow(searchTerm).then(setTvShow);
+      console.log(fetchShow(searchTerm))
     }
   }, [searchTerm]);
 
+  
   return (
     <>
       <button onClick={() => setShowOverlay(true)}>Search</button>
+      
 
       {/* Overlay */}
       {showOverlay && (

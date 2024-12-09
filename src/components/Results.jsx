@@ -49,10 +49,9 @@ export default function Results({ user, shows }) {
             ))}
           </select>
 
-          <button onClick={save} disabled={saving || !selectedScore}>
+          <button onClick={save}>
             {saving ? "Saving..." : "Save"}
           </button>
-
           {saved && <p>{shows.summary}</p>}
         </div>
       )
@@ -60,30 +59,27 @@ export default function Results({ user, shows }) {
   }
 
   return (
-    <div>
-        <h2>{shows.name}</h2>
-
-        {shows.image ? (
-            <img src={shows.image} alt={shows.name} />
-        ) : (
-            <p>No image available</p>
-        )}
-        <div>
+    {}
+      <div>
+          <h2>{shows.name}</h2>
+          {shows.image ? (
+              <img src={shows.image} alt={shows.name} />
+          ) : (
+              <p>No image available</p>
+          )}
+          <div>
             {user ? (
-                <div>
-                    <button onClick={() => setDropdownVisible((prev) => !prev)}>
-                        {dropdownVisible ? "Hide Options" : "Rate this Show"}
-                    </button>
-                    {<ButtonScore />}
-                </div>
+              <div>
+                <button onClick={() => setDropdownVisible((prev) => !prev)}>
+                  {dropdownVisible ? "Hide Options" : "Rate this Show"}
+                </button>
+                {<ButtonScore />}
+              </div>
 
-            ) : (
+              ) : (
                 <h3>Please Log In to rate your show.</h3>
             )}
-
-        </div>  
-      
-
-    </div>
+          </div>  
+      </div>
   );
 }

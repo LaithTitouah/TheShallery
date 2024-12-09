@@ -39,8 +39,6 @@ export async function saveFavorite(showId, selectedScore) {
         showId: showId,
         userId: userId,
         score: selectedScore,
-
-
     });
 
     console.log("Favorite added",  result);
