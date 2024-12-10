@@ -1,0 +1,62 @@
+header {
+  background-color: #fff5d7;
+  color: black;
+}
+
+@media(max-width: 560px) {
+  #headersection1 {
+    flex-direction: column;
+  }
+}
+
+#headersection1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#headersection1 h1 {
+  font-size: 45px;
+  color: black;
+  padding-left: 30px;
+
+}
+
+#sign-in {
+  display: flex;
+  align-items: center;
+  gap: 1em; 
+}
+
+.welcome {
+  margin: 0;
+  font-size: 1.2em;
+  color: black; 
+
+}
+
+.auth-button {
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  background-color: #ff5e6c;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.auth-button.signout:hover,
+.auth-button.signin:hover {
+  background-color: #ffaaab;
+}
+#headersection2 {
+  display:flex;
+  justify-content: center;
+}
+#headersection2 button {
+  padding:20px;
+  padding-left: 80px;
+  padding-right: 80px;
+  margin: 10px;
+}
+

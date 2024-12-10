@@ -1,7 +1,21 @@
 {
-  "name": "viddylist",
+  "name": "shallery",
+  "author": {
+    "name": "Jacob Martinez"
+  },
+  "contributors": [
+    {
+      "name": "Laith Titouah"
+    },
+    {
+      "name": "Sebastian Lange"
+    },
+    {
+      "name": "Nikolas Kunstman"
+    }
+  ],
   "private": true,
-  "version": "0.0.0",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,7 +25,6 @@
   },
   "dependencies": {
     "firebase": "^11.0.2",
-    "firebase-tools": "^13.27.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
