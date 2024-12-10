@@ -12,6 +12,13 @@
     z-index: 1000; /* Ensure it covers the whole page */
   }
 
+  .overlay .overlay-content {
+    background-color: rgb(248, 247, 240);
+    border: 3px solid rgb(156, 34, 34);
+    box-shadow: 5px 5px 5px  rgb(156, 34, 34);
+    ;
+  }
+
   @media(max-width: 560px) {
 
     .overlay .overlay-content #result {
@@ -47,7 +54,7 @@
   
   button {
     padding: 0.5em 1em;
-    background-color: #e84a5f;
+    background-color: #ff5e6c;
     color: white;
     border: none;
     cursor: pointer;
@@ -83,7 +90,10 @@
     justify-content: space-between;
     padding: 10px;
     border-radius: 10px;
-    border: 3px solid #de9c01;
+    border: 3px solid darkred;
+    box-shadow: 2px 2px 2px darkred;
+    background-color: white;
+    margin: 5px;
   }
 
   #savebutton {
