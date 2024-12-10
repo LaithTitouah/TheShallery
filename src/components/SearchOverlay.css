@@ -1,13 +1,11 @@
 .overlay-content{
-    background-color: #fff5d7;
+    background-color: white;
 }
 .overlayButton{
     background-color: #45171d;
     padding-right: 30px;
     padding-left: 30px;
 }
-
-
 #overlayButton:hover{
     background-color: #321015;
     border-radius: 10px;
