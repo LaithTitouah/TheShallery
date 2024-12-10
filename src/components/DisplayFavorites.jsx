@@ -1,7 +1,7 @@
 import { deleteFavorite } from "../services/favoriteService";
 import Save from "./Save";
 import {useAuthentication } from '../services/authService';
-import "./ViewFavorites.css"
+import "./css/ViewFavorites.css"
 
 
 export default function Display({ favorites, displayVisible, removeVisable, setDisplayVisibility, updateFavorites }) {

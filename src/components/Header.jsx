@@ -1,6 +1,6 @@
 import Overlay from './SearchOverlay';
 import { login, logout, useAuthentication } from '../services/authService';
-import './Header.css';
+import './css/Header.css';
 
 const Header = () => {
 const user = useAuthentication(); 

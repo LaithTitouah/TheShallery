@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./Search.css"; // Make sure to import your CSS file
+import "./css/Search.css"; // Make sure to import your CSS file
 import Search from "./Search";
 import Results from './Results';
 import { fetchShow } from '../services/searchService';
-import './SearchOverlay.css'
+import './css/SearchOverlay.css'
 
 export default function Overlay({ user }) {
   const [showOverlay, setShowOverlay] = useState(false);

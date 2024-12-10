@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Search.css"; // Make sure to import your CSS file
+import "./css/Search.css"; // Make sure to import your CSS file
 
 export default function Search( { setter, text }) {
     const [term, setTerm] = useState("");

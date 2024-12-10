@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Display from "./DisplayFavorites";
 import { getMyFavorites } from "../services/favoriteService";
-import "./Search.css"; // Make sure to import your CSS file
+import "./css/Search.css"; // Make sure to import your CSS file
 
 export default function ViewOther() {
   const [favorites, setFavorites] = useState([]);
