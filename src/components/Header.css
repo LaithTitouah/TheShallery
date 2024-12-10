@@ -1,6 +1,9 @@
 header {
   background-color: #fff5d7;
   color: black;
+  background-color:#ffaaab;
+  background-image: url("theatre.jpg");
+  background-size: cover;
 }
 
 @media(max-width: 560px) {
@@ -14,12 +17,14 @@ header {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  color: white;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 #headersection1 h1 {
   font-size: 45px;
-  color: black;
-  padding-left: 30px;
+  color: white;
 
 }
 
@@ -32,7 +37,7 @@ header {
 .welcome {
   margin: 0;
   font-size: 1.2em;
-  color: black; 
+  color: white; 
 
 }
 
@@ -40,7 +45,7 @@ header {
   padding: 0.5em 1em;
   border-radius: 0.3em;
   background-color: #ff5e6c;
-  color: black;
+  color: white;
   border: none;
   cursor: pointer;
 }
@@ -52,11 +57,26 @@ header {
 #headersection2 {
   display:flex;
   justify-content: center;
+  color: white;
 }
-#headersection2 button {
-  padding:20px;
-  padding-left: 80px;
-  padding-right: 80px;
-  margin: 10px;
+#headersection3 button {
+  padding:8px;
+  margin-bottom: 10px;
+}
+
+button {
+  color: white;
+  background-color: #ff6b81;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); 
+  transition: all 0.2s ease; 
+  margin-bottom: 8px;
+}
+button:hover {
+  background-color: #ff5e6c;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
+  transform: translateY(2px); 
 }
 
