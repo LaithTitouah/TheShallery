@@ -3,9 +3,7 @@
     grid-template-columns: 1fr; 
     gap: 20px; 
     padding: 20px;
-    background: linear-gradient(-45deg, #f4b41fa4,#feb200be,#e8aa1a);
-    background-size: 1200% 800%;
-    animation: gradient 15s ease infinite;
+    background-color: rgb(239, 69, 69);
   }
   @keyframes gradient {
     0% {
@@ -40,9 +38,9 @@
     align-items: center; 
     border-radius: 8px;
     padding: 10px;
-    background-color: #fff5d7;
-    border: 5px solid #de9c01;
-    box-shadow: 5px 5px 5px #de9c01;
+    background-color: white;
+    border: 5px solid darkred;
+    box-shadow: 5px 5px 5px darkred;
 }
 
 #listoffavorites img {
