@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { saveFavorite } from "../services/favoriteService";
 
-export default function Save({ user, shows, updateFavorites }) {
+export default function Save({ user, shows, updateFavorites, inMy }) {
     const [saving, setSaving] = useState(false);
     const [saved, setSaved] = useState(false);
     const [selectedScore, setSelectedScore] = useState("");
@@ -22,7 +22,9 @@ export default function Save({ user, shows, updateFavorites }) {
       
       } finally {
         setSaving(false);
-        updateFavorites();
+        if (inMy == true) {
+          updateFavorites(); 
+        }
       }
     }
   

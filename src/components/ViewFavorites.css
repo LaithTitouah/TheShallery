@@ -55,6 +55,6 @@
 
 #listoffavorites div p {
     margin: 0;
-    font-size: min(2vw, 2vh);;
+    font-size: 2vh;
     color: black;
 }

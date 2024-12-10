@@ -20,7 +20,7 @@ export default function ViewOther() {
 
     return (
       <>
-        <button onClick={() => setShowOverlay(true)}>Search Other User</button>
+        <button onClick={() => setShowOverlay(true)}>Search Another User</button>
 
         {/* Overlay */}
         {showOverlay && (
